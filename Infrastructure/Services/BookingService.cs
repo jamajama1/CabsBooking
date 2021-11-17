@@ -1,6 +1,6 @@
 ﻿using ApplicationCore;
+using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
-using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace Infrastructure.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly BookingRepository _bookingRepository;
-        public BookingService(BookingRepository bookingRepository)
+        private readonly IBookingRepository _bookingRepository;
+        public BookingService(IBookingRepository bookingRepository)
         {
             _bookingRepository = bookingRepository;
         }

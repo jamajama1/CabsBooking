@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
 using System;
@@ -17,27 +18,41 @@ namespace Infrastructure.Services
             _cabRepository = cabRepository;
         }
 
-        public Task Add(CabTypes cabTypes)
+        public async Task<CabResponseModel> Add(CabRequestModel requestModel)
+        {
+            var cab = new CabTypes();
+            var cabResponse = new CabResponseModel();
+            cab.CabTypeName = requestModel.CabTypeName;            
+
+            var addCab = await _cabRepository.Add(cab);
+            cabResponse.CabTypeName = addCab.CabTypeName;
+            cabResponse.Id = addCab.Id;
+
+
+            if (addCab != null)
+            {
+                return cabResponse;
+            }
+
+            return null;
+        }
+
+        public Task<bool> Delete(CabTypes cabTypes)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(CabTypes cabTypes)
+        public Task<List<CabResponseModel>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task GetAll()
+        public Task<CabResponseModel> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(CabTypes cabTypes)
+        public Task<CabResponseModel> Update(CabRequestModel requestModel)
         {
             throw new NotImplementedException();
         }

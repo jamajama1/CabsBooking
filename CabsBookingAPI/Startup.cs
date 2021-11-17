@@ -1,4 +1,8 @@
+using ApplicationCore.RepositoryInterfaces;
+using ApplicationCore.ServiceInterfaces;
 using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +34,20 @@ namespace CabsBookingAPI
         {
 
             services.AddControllers();
+            // Dependency Injection for repositories and services
+            services.AddScoped<IBookingHistoryRepository, BookingHistoryRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<ICabRepository, CabRepository>();
+            services.AddScoped<ILocationHistoryRepository, LocationHistoryRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IPlaceRespository, PlaceRepository>();
+            services.AddScoped<IPlaceService, PlaceService>();
+            services.AddScoped<IBookingHistoryService, BookingHistoryService>();
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<ICabService, CabService>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ILocationHistoryService, LocationHistoryService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CabsBookingAPI", Version = "v1" });

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    class LocationHistoryService : ILocationHistoryService
+    public class LocationHistoryService : ILocationHistoryService
     {
         private readonly ILocationHistoryRepository _locationHistoryRepository;
         public LocationHistoryService(ILocationHistoryRepository locationHistoryRepository)

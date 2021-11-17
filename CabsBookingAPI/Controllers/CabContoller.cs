@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationCore.Models;
+using ApplicationCore.ServiceInterfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,14 +13,30 @@ namespace CabsBookingAPI.Controllers
     [ApiController]
     public class CabContoller : ControllerBase
     {
-        public CabContoller()
+        private readonly ICabService _cabService;
+        public CabContoller(ICabService cabService)
         {
-
+            _cabService = cabService;
         }
 
-        public Task<> AddCab()
+        [HttpGet]
+        [Route("add")]
+        public async Task<IActionResult> AddCab()
         {
+            var CabResponse = new CabResponseModel();
+            return Ok(CabResponse);
+        }
 
+        [HttpPost]
+        [Route("add")]
+        public async Task<IActionResult> AddCab([FromBody] CabRequestModel requestModel)
+        {
+            var addedCab = await _cabService.Add(requestModel);
+
+            if(addedCab != null)
+                return Ok(addedCab);
+
+            return null;
         }
     }
 }
