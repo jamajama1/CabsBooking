@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class initialReCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PlaceName = table.Column<int>(type: "int", maxLength: 30, nullable: true)
+                    PlaceName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,7 +95,7 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PickupAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    DropoffAddress = table.Column<int>(type: "int", maxLength: 200, nullable: true),
+                    DropoffAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Landmark = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     PlacesId = table.Column<int>(type: "int", nullable: false),
                     BookingsId = table.Column<int>(type: "int", nullable: false)
@@ -124,7 +124,7 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PickupAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    DropoffAddress = table.Column<int>(type: "int", maxLength: 200, nullable: true),
+                    DropoffAddress = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Landmark = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     PlacesId = table.Column<int>(type: "int", nullable: false),
                     BookingsHistoryId = table.Column<int>(type: "int", nullable: false)

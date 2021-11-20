@@ -72,6 +72,23 @@ namespace Infrastructure.Services
             return cabResponse;
         }
 
+/*        public async Task<List<BookingsResponseModel>> getCabDetails(int id)
+        {
+            var details = await _cabRepository.Details(id);
+            var response = details.Select(r => new BookingsResponseModel
+            {
+                Id = r.Id,
+                BookingDate = r.BookingDate,
+                BookingTime = r.BookingTime,
+                CabTypesId = r.CabTypesId,
+                PickupDate = r.PickupDate,
+                PickupTime = r.PickupTime,
+                Status = r.Status
+            }).ToList();
+
+            return response;
+        }*/
+
         public async Task<CabResponseModel> Update(CabRequestModel requestModel)
         {
             var cab = await _cabRepository.GetById((int)requestModel.Id);

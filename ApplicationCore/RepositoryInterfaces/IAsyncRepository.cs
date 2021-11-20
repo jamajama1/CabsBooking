@@ -14,6 +14,9 @@ namespace ApplicationCore.RepositoryInterfaces
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> Get(Expression<Func<T, bool>> predicate);
+        public Task<IEnumerable<Bookings>> Details(int id);
+        public Task<IEnumerable<T>> ListAllWithIncludesAsync(Expression<Func<T, bool>> where,
+            params Expression<Func<T, object>>[] includes);
         Task<int> GetCount(Expression<Func<T, bool>> predicate);
         Task<T> Add(T entity);
         Task<T> Update(T entity);

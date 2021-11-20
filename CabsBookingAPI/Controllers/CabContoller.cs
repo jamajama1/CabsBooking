@@ -33,11 +33,19 @@ namespace CabsBookingAPI.Controllers
         {
             var addedCab = await _cabService.Add(requestModel);
 
-            if(addedCab != null)
+            if (addedCab != null)
                 return Ok(addedCab);
 
             return null;
         }
+
+/*        [HttpPost]
+        [Route("details")]
+        public async Task<IActionResult> details([FromBody] Identifier identifier)
+        {
+            var details = _cabService.getCabDetails(identifier.Id);
+            return Ok(details);
+        }*/
 
         [HttpGet]
         [Route("GetAllCabs")]

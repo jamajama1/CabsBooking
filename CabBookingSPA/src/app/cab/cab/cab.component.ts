@@ -31,4 +31,8 @@ export class CabComponent implements OnInit {
     this.cabservice.delete(this.cab).subscribe();
   }
 
+  reRoute(id: number){
+    console.log("clicked!");
+  }
+
 }

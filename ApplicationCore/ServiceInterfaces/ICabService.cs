@@ -10,6 +10,7 @@ namespace ApplicationCore.ServiceInterfaces
 {
     public interface ICabService
     {
+        /*public Task<List<BookingsResponseModel>> getCabDetails(int id);*/
         public Task<CabResponseModel> Add(CabRequestModel requestModel);
         public Task<List<CabResponseModel>> GetAll();
         public Task<CabResponseModel> GetById(int id);

@@ -21,6 +21,6 @@ namespace ApplicationCore
         // Navigation property
         public int? CabTypesId { get; set; }
         public CabTypes CabTypes { get; set; }
-        List<Location> Locations { get; set; }
+        ICollection<Location> Locations { get; set; }
     }
 }

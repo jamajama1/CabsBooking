@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CabsBookingDbContext))]
-    [Migration("20211118042720_FixPlaceError")]
-    partial class FixPlaceError
+    [Migration("20211120104259_initialReCreate")]
+    partial class initialReCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,9 +144,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("BookingsId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DropoffAddress")
+                    b.Property<string>("DropoffAddress")
                         .HasMaxLength(200)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Landmark")
                         .HasMaxLength(30)
@@ -178,9 +178,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("BookingsHistoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DropoffAddress")
+                    b.Property<string>("DropoffAddress")
                         .HasMaxLength(200)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Landmark")
                         .HasMaxLength(30)
