@@ -8,6 +8,7 @@ namespace ApplicationCore.Models
 {
     public class PlaceRequestModel
     {
-        public int? PlaceName { get; set; }
+        public int? Id { get; set; }
+        public string? PlaceName { get; set; }
     }
 }

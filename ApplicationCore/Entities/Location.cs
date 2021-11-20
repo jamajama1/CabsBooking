@@ -10,7 +10,7 @@ namespace ApplicationCore.Entities
     {
         public int Id { get; set; }
         public string? PickupAddress { get; set; }
-        public int? DropoffAddress { get; set; }
+        public string? DropoffAddress { get; set; }
         public string? Landmark { get; set; }
         public int PlacesId { get; set; }
         public Places Places { get; set; }

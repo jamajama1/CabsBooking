@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Models;
 
 namespace ApplicationCore.ServiceInterfaces
 {
     public interface IBookingService
     {
-        public Task Add(Bookings Bookings);
-        public Task GetAll();
-        public Task GetById(int id);
-        public Task Update(Bookings Bookings);
-        public Task Delete(Bookings Bookings);
+        public Task<BookingsDetailsResponseModel> Add(BookingsRequestModel requestModel);
+        public Task<List<BookingsResponseModel>> GetAll();
+        public Task<BookingsResponseModel> GetById(int id);
+        public Task<BookingsDetailsResponseModel> Update(UpdateBookingsRequestModel requestModel);
+        public Task Delete(int id);
     }
 }

@@ -1,0 +1,73 @@
+    
+    <h1>Bookings</h1>
+    <div>
+        <a [routerLink]="['/addbooking']" class="col-2 btn btn-primary">Add Booking</a>
+        <a [routerLink]="['/bookinghistory']" class="col-2 btn btn-primary float-right">View Booking History</a><br><br>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    BookingDate
+                </th>
+                <th>
+                    BookingTime
+                </th>
+                <th>
+                    PickupDate
+                </th>
+                <th>
+                    PickupTime
+                </th>
+                <th>
+                    ContactNo
+                </th>
+                <th>
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    <!-- @foreach (var item in Model) { -->
+            <tr *ngFor="let booking of bookings">
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.Email) -->
+                    {{booking.email}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.BookingDate) -->
+                    {{booking.bookingDate}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.BookingTime) -->
+                    {{booking.bookingTime}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.PickupDate) -->
+                    {{booking.pickupDate}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.PickupTime) -->
+                    {{booking.pickupTime}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.ContactNo) -->
+                    {{booking.contactNo}}
+                </td>
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.Status) -->
+                    {{booking.status}}
+                </td>
+                <td>
+                    <a [routerLink]="['/addbooking']" class="col-12 btn btn-primary">Edit</a><br><br>
+                    <a class="col-12 btn btn-primary" (click)="delete(booking.id)">Delete
+                    </a><br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    

@@ -17,7 +17,7 @@ namespace ApplicationCore.Models
 
         // Navigation property
         public int? CabTypesId { get; set; }
-        public CabTypes CabTypes { get; set; }
-        List<LocationRequestModel> Locations { get; set; }
+        //public CabTypes cabTypes { get; set; }
+        List<LocationRequestModel> locations { get; set; }
     }
 }

@@ -1,0 +1,28 @@
+    
+    <h1>Places</h1>
+    <a [routerLink]="['/addplace']" class="col-2 btn btn-primary">Add Place</a><br><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    <!-- @foreach (var item in Model) { -->
+            <tr *ngFor="let place of places">
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.Email) -->
+                    {{place.placeName}}
+                </td>      
+                <td>
+                    <a [routerLink]="['/editplace']" class="col-12 btn btn-primary">Edit</a><br><br>
+                    <a class="col-12 btn btn-primary" (click)="delete(place.id)">Delete
+                    </a><br>
+                </td>      
+            </tr>
+        </tbody>
+    </table>
+    

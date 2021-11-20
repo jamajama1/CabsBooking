@@ -1,0 +1,48 @@
+<h1>Location History</h1>
+<a [routerLink]="['/locations']" class="col-2 btn btn-primary">Back to Locations</a>
+<p>*To maintain data integrity, locations can only be added when a booking is added and must be deleted manually</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                PickupAddress
+            </th>
+            <th>
+                DropoffAddress
+            </th>
+            <th>
+                Landmark
+            </th>
+            <th>
+                PlacesId
+            </th>
+            <th>
+                BookingsHistoryId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locations">
+            <td>
+                {{location.pickupAddress}}
+            </td>
+            <td>
+                {{location.dropoffAddress}}
+            </td>
+            <td>
+                {{location.landmark}}
+            </td>
+            <td>
+                {{location.placesId}}
+            </td>
+            <td>
+                {{location.bookingsHistoryId}}
+            </td>
+            <td>
+                <a class="col-12 btn btn-primary" (click)="delete(location.id)">Delete
+                </a><br>
+            </td>
+        </tr>
+    </tbody>
+</table>

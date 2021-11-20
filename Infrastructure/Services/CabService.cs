@@ -37,24 +37,53 @@ namespace Infrastructure.Services
             return null;
         }
 
-        public Task<bool> Delete(CabTypes cabTypes)
+        public async Task Delete(CabRequestModel requestModel)
         {
-            throw new NotImplementedException();
+            var cab = new CabTypes
+            {
+                Id = (int)requestModel.Id,
+                CabTypeName = requestModel.CabTypeName
+            };
+            await _cabRepository.Delete(cab);
         }
 
-        public Task<List<CabResponseModel>> GetAll()
+        public async Task<List<CabResponseModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var cabList = new List<CabResponseModel>();
+            var allCabs = await _cabRepository.GetAll();
+
+            cabList = allCabs.Select(c => new CabResponseModel { 
+                Id = c.Id,
+                CabTypeName = c.CabTypeName
+            }).ToList();
+
+            return (cabList);
         }
 
-        public Task<CabResponseModel> GetById(int id)
+        public async Task<CabResponseModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var cab = await _cabRepository.GetById(id);
+            var cabResponse = new CabResponseModel
+            {
+                Id = cab.Id,
+                CabTypeName = cab.CabTypeName
+            };
+
+            return cabResponse;
         }
 
-        public Task<CabResponseModel> Update(CabRequestModel requestModel)
+        public async Task<CabResponseModel> Update(CabRequestModel requestModel)
         {
-            throw new NotImplementedException();
+            var cab = await _cabRepository.GetById((int)requestModel.Id);
+            cab.CabTypeName = requestModel.CabTypeName;
+            var updatedCab = await _cabRepository.Update(cab);
+            var cabResponse = new CabResponseModel
+            {
+                Id = updatedCab.Id,
+                CabTypeName = updatedCab.CabTypeName
+            };
+
+            return cabResponse;
         }
     }
 }

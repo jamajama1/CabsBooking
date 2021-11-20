@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
 using System;
@@ -16,27 +17,47 @@ namespace Infrastructure.Services
         {
             _locationHistoryRepository = locationHistoryRepository;
         }
-        public Task Add(LocationHistory LocationHistory)
+
+        public async Task Add(BookingsRequestModel requestModel)
         {
-            throw new NotImplementedException();
+            var location = new LocationHistory
+            {
+                PickupAddress = requestModel.locationRequest.PickupAddress,
+                DropoffAddress = requestModel.locationRequest.DropoffAddress,
+                Landmark = requestModel.locationRequest.Landmark,
+                BookingsHistoryId = requestModel.Id,
+                PlacesId = requestModel.locationRequest.placeIdRequestModel.Id,
+            };
+
+            await _locationHistoryRepository.Add(location);
         }
 
-        public Task Delete(LocationHistory LocationHistory)
+        public async Task Delete(LocationHistory locationHistory)
         {
-            throw new NotImplementedException();
+            await _locationHistoryRepository.Delete(locationHistory);
         }
 
-        public Task GetAll()
+        public async Task<List<LocationHistoryResponseModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var locationHistory = await _locationHistoryRepository.GetAll();
+            var locationResponse = locationHistory.Select(b => new LocationHistoryResponseModel
+            {
+                Id = b.Id,
+                PickupAddress = b.PickupAddress,
+                DropoffAddress = b.DropoffAddress,
+                Landmark = b.Landmark,
+                PlacesId = b.PlacesId,                
+            }).ToList();
+            return locationResponse;
         }
 
-        public Task GetById(int id)
+        public async Task<LocationHistory> GetById(int id)
         {
-            throw new NotImplementedException();
+            var location = await _locationHistoryRepository.GetById(id);
+            return location;
         }
 
-        public Task Update(LocationHistory LocationHistory)
+        public Task<LocationHistoryResponseModel> Update(LocationHistory LocationHistory)
         {
             throw new NotImplementedException();
         }

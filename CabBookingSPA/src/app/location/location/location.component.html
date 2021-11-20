@@ -1,0 +1,51 @@
+<h1>Locations</h1>
+
+<a [routerLink]="['/addbooking']" class="col-2 btn btn-primary">Add a location by adding a booking</a>
+<a [routerLink]="['/locationhistory']" class="col-2 btn btn-primary float-right">View Location History</a><br><br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                PickupAddress
+            </th>
+            <th>
+                DropoffAddress
+            </th>
+            <th>
+                Landmark
+            </th>
+            <th>
+                PlacesId
+            </th>
+            <th>
+                BookingsId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locations">
+            <td>
+                {{location.pickupAddress}}
+            </td>
+            <td>
+                {{location.dropoffAddress}}
+            </td>
+            <td>
+                {{location.landmark}}
+            </td>
+            <td>
+                {{location.placesId}}
+            </td>
+            <td>
+                {{location.bookingsId}}
+            </td>
+            <td>
+                <a [routerLink]="['/addlocation']" class="col-12 btn btn-primary">Edit</a><br><br>
+                <a class="col-12 btn btn-primary" (click)="delete(location.id)">Delete
+                </a><br>
+            </td>
+        </tr>
+    </tbody>
+</table>

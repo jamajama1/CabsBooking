@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace ApplicationCore.ServiceInterfaces
 {
      public interface ILocationService
     {
-        public Task Add(Location Location);
-        public Task GetAll();
-        public Task GetById(int id);
-        public Task Update(Location Location);
-        public Task Delete(Location Location);    }
+        public Task<LocationResponseModel> Add(LocationRequestModel requestModel);
+        public Task<List<LocationResponseModel>> GetAll();
+        public Task<LocationResponseModel> GetById(int id);
+        public Task<LocationResponseModel> Update(LocationRequestModel requestModel);
+        public Task<LocationResponseModel> Update(UpdateBookingsRequestModel requestModel);
+        public Task Delete(LocationRequestModel requestModel);    }
 }

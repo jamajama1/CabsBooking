@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Models;
 
 namespace ApplicationCore.ServiceInterfaces
 {
     public interface ILocationHistoryService
     {
-        public Task Add(LocationHistory LocationHistory);
-        public Task GetAll();
-        public Task GetById(int id);
-        public Task Update(LocationHistory LocationHistory);
-        public Task Delete(LocationHistory LocationHistory);
+        public Task Add(BookingsRequestModel requestModel);
+        public Task<List<LocationHistoryResponseModel>> GetAll();
+        public Task<LocationHistory> GetById(int id);
+        public Task<LocationHistoryResponseModel> Update(LocationHistory LocationHistory);
+        public Task Delete(LocationHistory locationHistory);
     }
 }

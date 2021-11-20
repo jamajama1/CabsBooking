@@ -1,0 +1,22 @@
+
+
+<h4>Edit Cab Type</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form (ngSubmit)="editCab(cabForm)" #cabForm="ngForm">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input name="cabTypeName" [(ngModel)]="cab.cabTypeName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a routerLink="/cabs">Back to Cab List</a>
+</div>

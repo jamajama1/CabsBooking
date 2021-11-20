@@ -8,6 +8,7 @@ namespace ApplicationCore.Models
 {
     public class CabRequestModel
     {
+        public int? Id { get; set; }
         public string? CabTypeName { get; set; }
     }
 }

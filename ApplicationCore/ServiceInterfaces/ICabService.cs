@@ -14,6 +14,6 @@ namespace ApplicationCore.ServiceInterfaces
         public Task<List<CabResponseModel>> GetAll();
         public Task<CabResponseModel> GetById(int id);
         public Task<CabResponseModel> Update(CabRequestModel requestModel);
-        public Task<Boolean> Delete(CabTypes cabTypes);
+        public Task Delete(CabRequestModel requestModel);
     }
 }

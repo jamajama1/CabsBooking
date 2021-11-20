@@ -3,9 +3,9 @@
 namespace ApplicationCore.Models
 {
     public class LocationHistoryRequestModel
-    {
+    {        
         public string? PickupAddress { get; set; }
-        public int? DropoffAddress { get; set; }
+        public string? DropoffAddress { get; set; }
         public string? Landmark { get; set; }
     }
 }

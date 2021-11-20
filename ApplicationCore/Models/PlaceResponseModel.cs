@@ -9,7 +9,7 @@ namespace ApplicationCore.Models
     public class PlaceResponseModel
     {
         public int Id { get; set; }
-        public int? PlaceName { get; set; }
+        public string? PlaceName { get; set; }
         List<LocationResponseModel> locations { get; set; }
         List<LocationHistoryResponseModel> locationHistories { get; set; }
     }

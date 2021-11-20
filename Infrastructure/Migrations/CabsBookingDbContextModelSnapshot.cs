@@ -142,9 +142,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("BookingsId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DropoffAddress")
+                    b.Property<string>("DropoffAddress")
                         .HasMaxLength(200)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Landmark")
                         .HasMaxLength(30)
@@ -176,9 +176,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("BookingsHistoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DropoffAddress")
+                    b.Property<string>("DropoffAddress")
                         .HasMaxLength(200)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Landmark")
                         .HasMaxLength(30)
@@ -207,9 +207,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("PlaceName")
+                    b.Property<string>("PlaceName")
                         .HasMaxLength(30)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 

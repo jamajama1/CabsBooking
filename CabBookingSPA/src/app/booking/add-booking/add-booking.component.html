@@ -1,0 +1,52 @@
+<h4>Add a booking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form (ngSubmit)="addBooking(bookingForm)" #bookingForm="ngForm">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label placeholder="Email" name="Email" class="control-label"></label>
+                <input placeholder="Email" name="Email" [(ngModel)]="booking.email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="BookingTime" name="BookingTime" class="control-label"></label>
+                <input placeholder="BookingTime" name="BookingTime" [(ngModel)]="booking.bookingTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="PickupTime" name="PickupTime" class="control-label"></label>
+                <input placeholder="PickupTime" name="PickupTime" [(ngModel)]="booking.pickupTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="ContactNo" name="ContactNo" class="control-label"></label>
+                <input placeholder="ContactNo" name="ContactNo" [(ngModel)]="booking.contactNo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="Status" name="Status" class="control-label"></label>
+                <input placeholder="Status" name="Status" [(ngModel)]="booking.status" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="pickupAddress" name="pickupAddress" class="control-label"></label>
+                <input placeholder="pickupAddress" name="pickupAddress" [(ngModel)]="booking.locationRequest.pickupAddress" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="dropoffAddress" name="dropoffAddress" class="control-label"></label>
+                <input placeholder="dropoffAddress" name="dropoffAddress" [(ngModel)]="booking.locationRequest.dropoffAddress" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="landmark" name="landmark" class="control-label"></label>
+                <input placeholder="landmark" name="landmark" [(ngModel)]="booking.locationRequest.landmark" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label placeholder="Placeid" name="Placeid" class="control-label"></label>
+                <input placeholder="Placeid" name="Placeid" [(ngModel)]="booking.locationRequest.placeIdRequestModel.id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a routerLink="/bookings">Back to List</a>
+</div>

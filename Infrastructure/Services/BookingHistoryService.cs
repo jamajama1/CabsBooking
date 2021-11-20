@@ -1,5 +1,6 @@
 ﻿using ApplicationCore;
 using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
 using System;
@@ -13,31 +14,65 @@ namespace Infrastructure.Services
     public class BookingHistoryService : IBookingHistoryService
     {
         private readonly IBookingHistoryRepository _bookingHistoryRepository;
-        public BookingHistoryService(IBookingHistoryRepository bookingHistoryRepository)
+        private readonly ILocationHistoryRepository _locationHistoryRepository;
+        public BookingHistoryService(IBookingHistoryRepository bookingHistoryRepository, ILocationHistoryRepository locationHistoryRepository)
         {
             _bookingHistoryRepository = bookingHistoryRepository;
-        }
-        public Task Add(BookingsHistory BookingsHistory)
-        {
-            throw new NotImplementedException();
+            _locationHistoryRepository = locationHistoryRepository;
         }
 
-        public Task Delete(BookingsHistory BookingsHistory)
+        public async Task<int> Add(BookingsRequestModel requestModel)
         {
-            throw new NotImplementedException();
+            var booking = new BookingsHistory
+            {
+                BookingDate = requestModel.BookingDate,
+                BookingTime = requestModel.BookingTime,
+                PickupDate = requestModel.PickupDate,
+                PickupTime = requestModel.PickupTime,
+                Email = requestModel.Email,
+                ContactNo = requestModel.ContactNo,
+                Status = requestModel.Status,
+                CabTypesId = requestModel.CabTypesId
+            };
+
+            await _bookingHistoryRepository.Add(booking);
+
+            return booking.Id;
         }
 
-        public Task GetAll()
+        public async Task Delete(BookingsHistory BookingsHistory)
         {
-            throw new NotImplementedException();
+            await _bookingHistoryRepository.Delete(BookingsHistory);
         }
 
-        public Task GetById(int id)
+        public async Task<List<BookingsHistoryResponseModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var bookingHistory = await _bookingHistoryRepository.GetAll();
+            var bookingResponse = bookingHistory.Select(b => new BookingsHistoryResponseModel
+            {
+                Id = b.Id,
+                BookingDate = b.BookingDate,
+                BookingTime = b.BookingTime,
+                Charge = (decimal?)10.99,
+                Email = b.Email,
+                ContactNo = b.ContactNo,
+                Comp_time = "30min",
+                Feedback = "smooth ride home",
+                PickupDate = b.PickupDate,
+                PickupTime = b.PickupTime,
+                Status = b.Status,
+                CabTypesId = b.CabTypesId               
+            }).ToList();
+            return bookingResponse;
         }
 
-        public Task Update(BookingsHistory BookingsHistory)
+        public async Task<BookingsHistory> GetById(int id)
+        {
+            var booking = await _bookingHistoryRepository.GetById(id);
+            return booking;
+        }
+
+        public Task<BookingsHistoryResponseModel> Update(BookingsHistory BookingsHistory)
         {
             throw new NotImplementedException();
         }

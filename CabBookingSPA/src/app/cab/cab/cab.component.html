@@ -1,0 +1,29 @@
+    
+    <h1>Cabs</h1>
+    <a [routerLink]="['/addcab']" class="col-2 btn btn-primary">Add Cab</a><br><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    <!-- @foreach (var item in Model) { -->
+            <tr *ngFor="let cab of cabs">
+                <td>
+                    <!-- @Html.DisplayFor(modelItem => item.Email) -->
+                    {{cab.cabTypeName}}
+                </td>
+                <td>
+                    <a [routerLink]="['/addcab']" class="col-12 btn btn-primary">Edit</a><br><br>
+                    <a class="col-12 btn btn-primary" (click)="delete(cab.id)">Delete
+                    </a><br>
+                </td>            
+            </tr>
+        </tbody>
+    </table>
+
+    

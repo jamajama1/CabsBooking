@@ -19,7 +19,7 @@ namespace ApplicationCore.Models
         public string? Feedback { get; set; }
 
         public int? CabTypesId { get; set; }
-        public CabTypes CabTypes { get; set; }
+        public CabTypes cabTypes { get; set; }
         List<LocationHistoryRequestModel> locationHistories { get; set; }
     }
 }

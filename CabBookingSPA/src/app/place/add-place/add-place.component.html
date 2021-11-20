@@ -1,0 +1,20 @@
+<h4>Add Place</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form (ngSubmit)="addPlace(placeForm)" #placeForm="ngForm">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label name="PlaceName" class="control-label"></label>
+                <input name="placeName" [(ngModel)]="place.placeName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a routerLink="/places">Back to List</a>
+</div>

@@ -9,7 +9,7 @@ namespace ApplicationCore.Entities
     public class Places
     {
         public int Id { get; set; }
-        public int? PlaceName { get; set; }
+        public string? PlaceName { get; set; }
 
         // Navigation Property
         List<Location> locations { get; set; }

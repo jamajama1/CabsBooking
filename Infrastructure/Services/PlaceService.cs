@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
 using System;
@@ -16,29 +17,66 @@ namespace Infrastructure.Services
         {
             _placeRepository = placeRespository;
         }
-        public Task Add(Places Places)
+        public async Task<PlaceResponseModel> Add(PlaceRequestModel requestModel)
+        {
+            var place = new Places();
+            var placeResponse = new PlaceResponseModel();
+            place.PlaceName = requestModel.PlaceName;            
+
+            var addplace = await _placeRepository.Add(place);
+            placeResponse.PlaceName = addplace.PlaceName;
+            placeResponse.Id = addplace.Id;
+
+
+            if (addplace != null)
+            {
+                return placeResponse;
+            }
+
+            return null;
+        }
+
+        public async Task Delete(PlaceRequestModel requestModel)
+        {
+            var cab = new Places
+            {
+                Id = (int)requestModel.Id,
+                PlaceName = requestModel.PlaceName
+            };
+            await _placeRepository.Delete(cab);
+        }
+
+        public async Task<List<PlaceResponseModel>> GetAll()
+        {
+            var placeList = new List<PlaceResponseModel>();
+            var allPlaces = await _placeRepository.GetAll();
+
+            placeList = allPlaces.Select(p => new PlaceResponseModel
+            {
+                Id = p.Id,
+                PlaceName = p.PlaceName
+            }).ToList();
+
+            return (placeList);
+        }
+
+        public Task<PlaceResponseModel> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(Places Places)
+        public async Task<PlaceResponseModel> Update(PlaceRequestModel requestModel)
         {
-            throw new NotImplementedException();
-        }
+            var place = await _placeRepository.GetById((int)requestModel.Id);
+            place.PlaceName = requestModel.PlaceName;
+            var updatedCab = await _placeRepository.Update(place);
+            var cabResponse = new PlaceResponseModel
+            {
+                Id = updatedCab.Id,
+                PlaceName = updatedCab.PlaceName
+            };
 
-        public Task GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(Places Places)
-        {
-            throw new NotImplementedException();
+            return cabResponse;
         }
     }
 }

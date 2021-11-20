@@ -16,6 +16,6 @@ namespace ApplicationCore.Models
         public string? Comp_time { get; set; }
         public decimal? Charge { get; set; }
         public string? Feedback { get; set; }
-
+        public LocationHistoryRequestModel locationHistoryRequestModel { get; set; }
     }
 }
